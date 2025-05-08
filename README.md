@@ -58,6 +58,27 @@ discord-chat-summarizer-ai/
 
 ---
 
+## 📦 Releases
+
+Latest release: **v3.0 — Stable**
+
+```txt
+✅ New UI tab with dropdowns, input fields and OpenRouter diagnostics  
+✅ Full integration with free-tier OpenRouter models  
+✅ Chat memory management with dynamic trimming  
+✅ Automatic channel context tracking  
+✅ Supports Nighty or compatible Discord selfbot frameworks  
+```
+
+Download: [GitHub Releases](https://github.com/danisqxas/discord-chat-summarizer-ai/releases)
+
+Future versions may include:
+- Full log export
+- Support for multi-channel summaries
+- Real-time event tracking
+
+---
+
 ## 🔎 Who This Is For
 
 - **Developers** who want real-time insight from logs  
