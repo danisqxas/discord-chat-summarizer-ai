@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Summarizer API Test</title>
+  </head>
+  <body style="font-family:sans-serif;padding:2rem;">
+    <h1>Chat Summarizer API Test</h1>
+    <form id="form">
+      <label for="summary">Resumen:</label><br />
+      <textarea id="summary" rows="5" cols="50">Resumen de prueba...</textarea><br />
+      <label for="messages">Mensajes (JSON array):</label><br />
+      <textarea id="messages" rows="10" cols="50">["Hola", "¿cómo estás?", "todo bien"]</textarea><br />
+      <button type="submit">Enviar</button>
+    </form>
+    <pre id="result" style="margin-top:2rem;background:#eee;padding:1rem;"></pre>
+    <script>
+      document.getElementById("form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const summary = document.getElementById("summary").value;
+        const messages = JSON.parse(document.getElementById("messages").value);
+        const response = await fetch("/api/chat_summarizer", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ summary, messages })
+        });
+        const data = await response.json();
+        document.getElementById("result").textContent = JSON.stringify(data, null, 2);
+      });
+    </script>
+  </body>
+</html>
