@@ -23,7 +23,7 @@
         const response = await fetch("/api/chat_summarizer", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ summary, messages })
+          body: JSON.stringify({ summary, messages }),
         });
         const data = await response.json();
         document.getElementById("result").textContent = JSON.stringify(data, null, 2);
