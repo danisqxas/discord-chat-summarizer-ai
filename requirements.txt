@@ -1,1 +1,1 @@
-aiohttp
+# This project currently has no third-party runtime dependencies.
