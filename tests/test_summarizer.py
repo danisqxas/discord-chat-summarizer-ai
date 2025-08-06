@@ -1,9 +1,9 @@
 from pathlib import Path
 import sys
 
-sys.path.append(str(Path(__file__).resolve().parents[1]))
+sys.path.append(str(Path(__file__).resolve().parents[1] / "src"))
 
-from src.utils import summarize_text
+from chat_summarizer import summarize_text
 
 
 def test_summarize_text_picks_relevant_sentences():
