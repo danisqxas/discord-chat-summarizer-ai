@@ -1,10 +1,15 @@
-"""
-Este módulo maneja la configuración de la interfaz de usuario del bot.
-Incluye funciones relacionadas con la configuración visual y la interacción del bot.
+"""Sencilla interfaz gráfica para resumir conversaciones.
+
+La interfaz usa :func:`~src.utils.summarize_text` para producir un
+resumen extractivo de los mensajes escritos por el usuario.  Está
+pensada como una utilidad de demostración; en un entorno de producción
+se integraría con un bot de Discord u otras plataformas.
 """
 
 import tkinter as tk
 from tkinter import messagebox
+
+from .utils import summarize_text
 
 
 class ChatSummarizerUI:
@@ -57,21 +62,14 @@ class ChatSummarizerUI:
             )
             return
 
-        # Aquí se llamaría a la lógica de resumen (por ejemplo, una función en otro módulo)
-        summary = self._mock_summarize(chat_text)
+        # Resumimos el texto utilizando la función real de utilidades.
+        summary = summarize_text(chat_text)
 
         # Muestra el resumen en el área de salida
         self.summary_output.config(state="normal")
         self.summary_output.delete("1.0", tk.END)
         self.summary_output.insert(tk.END, summary)
         self.summary_output.config(state="disabled")
-
-    def _mock_summarize(self, text):
-        """
-        Función de ejemplo para simular el resumen de texto.
-        En una implementación real, esta función llamaría a la lógica de resumen.
-        """
-        return f"Resumen simulado: {text[:100]}..."  # Devuelve los primeros 100 caracteres como ejemplo
 
     def run(self):
         """

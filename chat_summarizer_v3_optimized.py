@@ -1,7 +1,10 @@
 # Consolidated Chat Summarizer Script
-import os
+import argparse
 import json
+import webbrowser
 from pathlib import Path
+
+from src.utils import summarize_text
 
 # Configuration management
 API_KEY_CONFIG = "summarizer_api_key"
@@ -74,30 +77,54 @@ def summarize_command(ctx, args):
 
 
 def generate_summary(channel_id):
-    print(f"Generating summary for channel {channel_id}")
+    """Generate and print a summary for the provided ``channel_id``.
+
+    Messages are loaded from the history file and summarized using
+    :func:`src.utils.summarize_text`.  Each history item can either be a
+    plain string or a mapping containing a ``content`` field.
+    """
+
+    history = load_history()
+    if not history:
+        print("No history available to summarise.")
+        return
+
+    messages = [
+        item["content"] if isinstance(item, dict) and "content" in item else str(item)
+        for item in history
+    ]
+    summary = summarize_text(" ".join(messages))
+    print(f"Summary for channel {channel_id}:\n{summary}")
 
 
 # UI management
 def open_router_keys():
     try:
-        os.startfile("https://openrouter.ai/keys")
-    except OSError as e:
+        webbrowser.open("https://openrouter.ai/keys")
+    except webbrowser.Error as e:
         print(f"Error opening browser: {e}")
 
 
 def open_router_models():
     try:
-        os.startfile("https://openrouter.ai/models")
-    except OSError as e:
+        webbrowser.open("https://openrouter.ai/models")
+    except webbrowser.Error as e:
         print(f"Error opening browser: {e}")
 
 
 # Main script logic
 def chat_summarizer_script():
+    parser = argparse.ArgumentParser(description="Summarise stored chat history")
+    parser.add_argument(
+        "--channel", type=str, default="default", help="Channel identifier for the history"
+    )
+    args = parser.parse_args()
+
     try:
         print("Chat Summarizer initialized.")
         config = get_config_data()
         print("Loaded config:", config)
+        generate_summary(args.channel)
     except ValueError as e:
         print(f"Error: {e}")
 
