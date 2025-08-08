@@ -9,3 +9,4 @@ def test_multiplication():
 
 def test_division():
     assert 4 / 2 == 2
+
