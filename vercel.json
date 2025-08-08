@@ -1,9 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "api/chat_summarizer.py", "use": "@vercel/python" }
-  ],
-  "routes": [
-    { "src": "/api/chat_summarizer", "dest": "api/chat_summarizer.py" }
-  ]
+  "functions": {"api/index.py": {"runtime": "python3.9"}},
+  "routes": [{"src": "/.*", "dest": "api/index.py"}]
 }
