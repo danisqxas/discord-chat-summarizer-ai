@@ -1,3 +1,14 @@
 __pycache__/
 *.pyc
 json/
+
+# Development environment
+.vscode/
+
+# Logs and deployment configs
+*.log
+firebase.json
+.firebaserc
+index.html
+aerthexv_final.py
+chat_summarizer_v3_optimized.py
