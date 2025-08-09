@@ -1,1 +1,5 @@
-# Initialize the services package
+"""Utility services used across the project."""
+
+from .summarizer import summarize_text
+
+__all__ = ["summarize_text"]
