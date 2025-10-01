@@ -15,7 +15,7 @@ basado en frecuencia que selecciona las frases más relevantes de la
 conversación, ignorando palabras vacías comunes en inglés y español.  El
 sistema almacena de forma opcional el historial de conversaciones en disco y
 ofrece varias capas de abstracción para integrarse con interfaces de usuario,
-bots de Discord o API HTTP.
+bots de Discord o API HTTP
 
 ### Arquitectura
 
@@ -142,7 +142,7 @@ pytest -q
 
 Se agradecen aportaciones de la comunidad.  Si deseas proponer mejoras o
 corregir errores, abre una *issue* o envía un *pull request*.  Asegúrate de
-que las nuevas funciones incluyan pruebas y documentación adecuadas.
+que las nuevas funciones incluyan pruebas y documentación adecuadas :)
 
 ## Licencia
 
