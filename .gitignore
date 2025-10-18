@@ -12,3 +12,9 @@ firebase.json
 index.html
 aerthexv_final.py
 chat_summarizer_v3_optimized.py
+# Node modules and environment
+node_modules/
+.env
+
+# Ignore Vercel directory
+.vercel/
